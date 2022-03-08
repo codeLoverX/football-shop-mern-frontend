@@ -1,0 +1,41 @@
+@font-face {
+    font-family: permenantMarker;
+    src: url('../assets/PermanentMarker-Regular.ttf');
+}
+
+.font-myfirstFont {
+    font-family: permenantMarker;
+    font-size: 80px;
+}
+
+.gridNew {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 0px 100px;
+    align-items: center;
+}
+
+.gridNew>img {
+    width: 200px;
+}
+
+@media only screen and (max-width: 900px) {
+    .gridNew {
+        grid-template-columns: 1fr;
+    }
+    
+    .gridNew>img {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .gridNew {
+        grid-template-columns: 1fr;
+    }
+    .gridNew>img {
+        width: 300px;
+    }
+}

@@ -1,0 +1,64 @@
+.component__carousel{ 
+    /* 
+        The containing block for an absolutely positioned 
+        element is established by its closest, positioned ancestor. That is,
+        the nearest element outside it that has a position of absolute, 
+        relative or fixed. If there is no such ancestor element, the 
+        initial containing block (the browser window) is used. 
+    */
+    position: relative;
+    padding: 0 10%;
+    max-width: 100% !important;
+    }
+    
+    .component__carousel > div.imageWrapper > img{
+        width: 100%;
+        height: 500px;
+    }
+    div.textCarousel{
+        width: 100%;
+        position: absolute;
+        top: 70%;
+        left:0;
+        color: black;
+        z-index: 100;
+    }
+    
+    div.textCarousel h1, div.textCarousel h2, div.textCarousel h3, 
+    div.textCarousel h4, div.textCarousel h5{
+        font-weight: 800;
+        font-size: 2rem;
+    }
+    div.textCarousel p{
+        
+        font-weight: 800;
+        font-size: 1.5rem;
+    }
+    
+
+    div.imageWrapper img{
+        opacity: 0.8;
+    }
+    
+    @media only screen and (max-width: 750px) {
+        .component__carousel{ 
+            padding: 0;
+            }
+        .component__carousel > div.imageWrapper{
+                overflow-x: hidden;
+        }
+        .component__carousel > div.imageWrapper > img{
+            height: 40vw;
+            width: 120%;
+            
+        }
+        
+      }
+    
+      @media only screen and (max-width: 900px) {
+        .component__carousel > div.imageWrapper > img{
+            height: 400px;
+           
+        }
+       
+      }
