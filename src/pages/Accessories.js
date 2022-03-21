@@ -8,7 +8,7 @@ import { Route } from 'react-router-dom'
 import Description from './Description'
 
 function Accessories() {
-    
+
     return (
 
         <div>

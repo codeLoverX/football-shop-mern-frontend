@@ -5,6 +5,8 @@ import "./Description.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from "./CartSlice";
 import { fetchProduct, selectCurrentProduct } from './ProductSlice';
+import { cookieKey } from '../api/env';
+import { getCookie } from '../api/api';
 
 const BreadcrumbPage = ({ type, productName, productid }) => {
     return (
@@ -104,8 +106,19 @@ function DescriptionPartTwo() {
         console.log({ size, quantity })
 
         if (cartStateToReducer.quantity > 0) {
-            alert("Added to cart.")
-            await dispatch(addProduct({productId: userPath, body }))
+            
+            const token = getCookie(cookieKey)
+            if (token === "null" || token === null || token === undefined) {
+
+                alert("Sign in first!")
+                return "";
+            }
+            else {
+                alert("Added to cart.")
+                await dispatch(addProduct({productId: userPath, body }))
+
+            }
+            
         }
         else {
             alert("Quantity can't be less than zero")

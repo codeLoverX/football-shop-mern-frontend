@@ -1,7 +1,7 @@
 import React, { useEffect, useState }
     from "react";
 import {
-    MDBContainer, MDBCol, MDBRow, MDBCard,  MDBNav, 
+    MDBContainer, MDBCol, MDBRow, MDBCard, MDBCardBody, MDBNav, MDBTabPane,
     MDBIcon,
     MDBAlert
 } from "mdbreact";

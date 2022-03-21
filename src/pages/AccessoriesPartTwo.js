@@ -24,16 +24,19 @@ function JerseysPartTwo() {
     let elem = useSelector(selectProducts)
     const dispatch = useDispatch()
 
-    useEffect( () => {
+    useEffect(() => {
 
-        async function fetchData() { try {
-            const originalPromiseResult = await dispatch(fetchAll('accessories')).unwrap()
-            if (originalPromiseResult.product)
-                console.log({ okay: originalPromiseResult })
+        async function fetchData() {
+            try {
+                const originalPromiseResult = await dispatch(fetchAll('accessories')).unwrap()
+                if (originalPromiseResult.product)
+                    console.log({ okay: originalPromiseResult })
 
-        } catch (rejectedValueOrSerializedError) {
-            console.log({ failed: rejectedValueOrSerializedError })
-        }}
+            } catch (rejectedValueOrSerializedError) {
+              
+                console.log({ failed: rejectedValueOrSerializedError })
+            }
+        }
         let controller = new AbortController();
         fetchData()
         console.log(elem)

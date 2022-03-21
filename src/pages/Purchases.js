@@ -10,6 +10,19 @@ import { roundOff } from "../helper/helper";
 // name, price, imageSrc, type
 // inputs: rate, size, quantity
 
+function returnDateFormatted(dateString){
+  var dateObj= new Date(dateString)
+  console.log({dateString, dateObj})
+  var hour = dateObj.getHours();
+  var minutes = dateObj.getMinutes();
+  var seconds = dateObj.getSeconds() ;
+
+  var day = dateObj.getDate();
+  var year = dateObj.getYear();
+  var month = dateObj.getMonth();
+
+  return `Purchased at ${day}/${month}/${year} ${hour}:${minutes}:${seconds}`
+}
 
 function deepCopyObj(obj) {
   if (null == obj || "object" != typeof obj) return obj;
@@ -68,14 +81,24 @@ export default function Purchases() {
   }, [data.length])
 
   return <>
-    <MDBRow className="my-2 special-margin" center>
-      <MDBCard style={{ marginTop: "50px" }}>
+    <MDBRow className="my-0 special-margin" center>
+      <MDBCard style={{ marginTop: "45px" }}>
         <MDBCardBody>
-          <h3 className="text-warning my-2 text-center"> Purchases </h3>
+          <h3 className="w-100 text-warning my-0 text-center"> Purchases </h3>
           <br />
           {data.map((value, index) => {
+            if (value.status === 'active' && data.length===1) return (
+              <div style={{width: "60vw"}}>
+                <p className="text-center">No purchases yet!</p>
+              </div>
+            )
+            if (value.status === 'active') return null
+
             return (
-              <Cart key={`${value}${index}history`} data={value} />
+              <>
+                {value.paidAt && <p className="my-2 text-center"> {returnDateFormatted(value.paidAt)} </p> }
+                <Cart key={`${value}${index}history`} data={value} />
+              </>
             )
           })}
         </MDBCardBody>
@@ -211,7 +234,7 @@ export function Cart({ data }) {
           <span>
             Image
           </span>
-          <span>
+          <span className="px-4">
             Name
           </span>
           <div
@@ -247,7 +270,7 @@ export function Cart({ data }) {
                   <div
                     className="mx-auto"
                   >
-                   
+
                   </div>
                 </div>
                 <MDBCollapse id="basicCollapse" isOpen={collapse[index]} className="py-3 align-items-around" style={{ height: "130px" }}>

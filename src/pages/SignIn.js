@@ -15,22 +15,26 @@ import { fetchProfile, setSignedIn } from "./ProfileSlice";
 
 function SignIn() {
 
-    
+    // fetch dispatch
 
     const dispatch = useDispatch()    
 
-   
+    {/* Notification handler */ }
+    // initial value
     let [notification, setNotification] = useState({
         loading: false,
         error: false,
         success: false
     })
 
-    
+    {/* Form values handler */ }
+
+    // initial value
     let [input, setInput] = useState({
         password: "",
         email: ""
     })
+    // change value
     let onChange = async (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -42,6 +46,8 @@ function SignIn() {
         });
     }
 
+
+    {/* Form values submit */ }
 
     let onSubmit = async (event) => {
         event.preventDefault();

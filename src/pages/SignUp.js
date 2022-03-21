@@ -14,7 +14,8 @@ import { useHistory } from "react-router-dom";
 
 function SignIn() {
 
-  
+    {/* Notification handler */ }
+    // initial value
     let [notification, setNotification] = useState({
         loading: false,
         error: false,
@@ -23,13 +24,16 @@ function SignIn() {
 
     let history = useHistory();
 
-   
+    {/* Form values handler */ }
+
+    // initial value
     let [input, setInput] = useState({
         fname: "",
         lname: "",
         password: "",
         email: ""
     })
+    // change value
     let onChange = async (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -41,6 +45,8 @@ function SignIn() {
         });
     }
 
+
+    {/* Form values submit */ }
 
     let onSubmit = async (event) => {
         event.preventDefault();
@@ -84,7 +90,9 @@ function SignIn() {
             })        }
     }
 
-  
+    {/* Recaptcha */}
+
+     // initial value
     
     return (
         <MDBContainer>
@@ -112,7 +120,7 @@ function SignIn() {
                                         <div className="input-group my-3">
                                             <input type="password" id="password" name="password" className="form-control" onChange={(event) => { onChange(event) }} placeholder="Enter your password" />
                                         </div>
-                                        
+                                     
                                         {notification.loading && <Spinner />}
                                         {notification.error && <AlertPage text="Not signed in"/>}
                                         {notification.success && <Success text="Signed in"/>}

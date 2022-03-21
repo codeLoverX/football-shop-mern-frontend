@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import EcommerceGridHorizontal from '../components/EcommerceGridHorizontalPartTwo'
 import EcommerceGridVertical from '../components/EcommerceGridVerticalPartTwo'
 import Overlay from '../components/Overlay'
 import JerseyImg from "../assets/Jerseys.jpg"

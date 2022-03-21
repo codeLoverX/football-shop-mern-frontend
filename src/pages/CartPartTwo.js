@@ -226,7 +226,7 @@ export default function Cart() {
             {
               !data.products ||
               data.products[0] === null &&
-              <div style={{ textAlign: "center" }}>
+              <div style={{ textAlign: "center", marginTop: "10px" }}>
                 Added nothing to cart !
               </div>
 
