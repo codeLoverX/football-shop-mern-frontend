@@ -10,21 +10,24 @@ function EcommerceGridVertical({ product, data }) {
     let dataLength = data.length;
     let increment = (multiplier) => {
         setBegin((prev) => {
-            prev = prev + (length * parseInt(multiplier))
-            if (prev <= 0) {
-                prev = 0;
+            let prev2 = prev
+            prev2 = prev2 + (length * parseInt(multiplier))
+            if (prev2 < 0) {
+                prev2 = 0;
             }
-            if (prev >= dataLength) {
-                prev = dataLength - length;
+            if (prev2 >= dataLength) {
+                prev2 = dataLength - length;
             }
-            return prev;
+            return prev2;
         });
     }
+    /// Pagination
     let num = Math.ceil(parseInt(dataLength) / parseInt(length));
     let arr = [];
     for (var i = 0; i < num; i++) {
         arr.push(i)
     }
+    console.log({updated: true, begin})
 
     return (
         <Fragment>
@@ -34,7 +37,7 @@ function EcommerceGridVertical({ product, data }) {
                     {
                         data !== null &&
                         data.map((value, index) => {
-                            if (index+length >= begin && (index+length < begin+length || index+length < dataLength) ) return null
+                            if (  index<begin || index>= length+begin ) return null
                             else return (
                                 <Fragment key={`${index}${value._id}`}>
                                     <MDBCard className="px-0 mx-0" style={{ border: "1px solid gold" }}>

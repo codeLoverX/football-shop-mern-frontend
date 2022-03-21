@@ -22,15 +22,15 @@ function App() {
     let controller = new AbortController();
     async function fetchData() {
         try {
-          const response = await api('GET', "", {
+          const response = await api('GET', 'current', {
             mode: 'cors',
           })
-
         } catch (error) {
             console.log({ failed: error })
         }
     }
 
+    fetchData()
     fetchData()
     fetchData()
 
